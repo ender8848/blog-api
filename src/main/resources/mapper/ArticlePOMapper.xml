@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="blog.api.mapper.ArticlePOMapper" >
+  <resultMap id="BaseResultMap" type="blog.api.po.ArticlePO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="user_id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="sort_id" property="sort_id" jdbcType="BIGINT" />
+    <result column="view_count" property="view_count" jdbcType="BIGINT" />
+    <result column="thumb_count" property="thumb_count" jdbcType="BIGINT" />
+    <result column="comment_count" property="comment_count" jdbcType="BIGINT" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="blog.api.po.ArticlePO" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, title, sort_id, view_count, thumb_count, comment_count, create_time, 
+    update_time, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="blog.api.po.ArticlePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="blog.api.po.ArticlePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from article
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="blog.api.po.ArticlePOExample" >
+    delete from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="blog.api.po.ArticlePO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into article (user_id, title, sort_id, 
+      view_count, thumb_count, comment_count, 
+      create_time, update_time, status, 
+      content)
+    values (#{user_id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{sort_id,jdbcType=BIGINT}, 
+      #{view_count,jdbcType=BIGINT}, #{thumb_count,jdbcType=BIGINT}, #{comment_count,jdbcType=BIGINT}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="blog.api.po.ArticlePO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        user_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="sort_id != null" >
+        sort_id,
+      </if>
+      <if test="view_count != null" >
+        view_count,
+      </if>
+      <if test="thumb_count != null" >
+        thumb_count,
+      </if>
+      <if test="comment_count != null" >
+        comment_count,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="update_time != null" >
+        update_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user_id != null" >
+        #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sort_id != null" >
+        #{sort_id,jdbcType=BIGINT},
+      </if>
+      <if test="view_count != null" >
+        #{view_count,jdbcType=BIGINT},
+      </if>
+      <if test="thumb_count != null" >
+        #{thumb_count,jdbcType=BIGINT},
+      </if>
+      <if test="comment_count != null" >
+        #{comment_count,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null" >
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="blog.api.po.ArticlePOExample" resultType="java.lang.Integer" >
+    select count(*) from article
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update article
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.user_id != null" >
+        user_id = #{record.user_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort_id != null" >
+        sort_id = #{record.sort_id,jdbcType=BIGINT},
+      </if>
+      <if test="record.view_count != null" >
+        view_count = #{record.view_count,jdbcType=BIGINT},
+      </if>
+      <if test="record.thumb_count != null" >
+        thumb_count = #{record.thumb_count,jdbcType=BIGINT},
+      </if>
+      <if test="record.comment_count != null" >
+        comment_count = #{record.comment_count,jdbcType=BIGINT},
+      </if>
+      <if test="record.create_time != null" >
+        create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.update_time != null" >
+        update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update article
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.user_id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      sort_id = #{record.sort_id,jdbcType=BIGINT},
+      view_count = #{record.view_count,jdbcType=BIGINT},
+      thumb_count = #{record.thumb_count,jdbcType=BIGINT},
+      comment_count = #{record.comment_count,jdbcType=BIGINT},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update article
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.user_id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      sort_id = #{record.sort_id,jdbcType=BIGINT},
+      view_count = #{record.view_count,jdbcType=BIGINT},
+      thumb_count = #{record.thumb_count,jdbcType=BIGINT},
+      comment_count = #{record.comment_count,jdbcType=BIGINT},
+      create_time = #{record.create_time,jdbcType=TIMESTAMP},
+      update_time = #{record.update_time,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="blog.api.po.ArticlePO" >
+    update article
+    <set >
+      <if test="user_id != null" >
+        user_id = #{user_id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="sort_id != null" >
+        sort_id = #{sort_id,jdbcType=BIGINT},
+      </if>
+      <if test="view_count != null" >
+        view_count = #{view_count,jdbcType=BIGINT},
+      </if>
+      <if test="thumb_count != null" >
+        thumb_count = #{thumb_count,jdbcType=BIGINT},
+      </if>
+      <if test="comment_count != null" >
+        comment_count = #{comment_count,jdbcType=BIGINT},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="blog.api.po.ArticlePO" >
+    update article
+    set user_id = #{user_id,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      sort_id = #{sort_id,jdbcType=BIGINT},
+      view_count = #{view_count,jdbcType=BIGINT},
+      thumb_count = #{thumb_count,jdbcType=BIGINT},
+      comment_count = #{comment_count,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="blog.api.po.ArticlePO" >
+    update article
+    set user_id = #{user_id,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      sort_id = #{sort_id,jdbcType=BIGINT},
+      view_count = #{view_count,jdbcType=BIGINT},
+      thumb_count = #{thumb_count,jdbcType=BIGINT},
+      comment_count = #{comment_count,jdbcType=BIGINT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

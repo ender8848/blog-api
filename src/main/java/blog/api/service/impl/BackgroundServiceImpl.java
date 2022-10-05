@@ -1,6 +1,9 @@
 package blog.api.service.impl;
 
 import blog.api.enums.HttpStatus;
+import blog.api.mapper.UserPOMapper;
+import blog.api.po.UserPO;
+import blog.api.po.UserPOExample;
 import blog.api.service.BackgroundService;
 import org.springframework.stereotype.Service;
 
