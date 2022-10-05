@@ -1,23 +1,21 @@
-
-use blog;
 -- 用户表
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`
 (
-    `id`          bigint(20)   NOT NULL COMMENT '用户id',
-    `ip`          VARCHAR(32)  NOT NULL COMMENT '用户IP',
-    `username`    VARCHAR(32)  NOT NULL COMMENT '用户名',
-    `nickname`    VARCHAR(32)  NOT NULL COMMENT '用户昵称',
-    `password`    bigint(20)   NOT NULL COMMENT '用户密码',
-    `email`       varchar(255) NOT NULL COMMENT '用户邮箱',
-    `image`       varchar(255) NOT NULL COMMENT '头像',
-    `birthday`    datetime     NOT NULL COMMENT '用户生日',
-    `age`         bigint(20)   NOT NULL COMMENT '用户年龄',
-    `sex`         varchar(2)   NOT NULL COMMENT '性别',
-    `phone`       varchar(11)  NOT NULL COMMENT '手机号',
-    `status`      int(11)      NOT NULL DEFAULT '1' COMMENT '状态 0:禁用，1:正常',
-    `create_time` datetime     NOT NULL DEFAULT now() COMMENT '注册时间',
-    `update_time` datetime              DEFAULT NULL COMMENT '信息修改时间',
+    `id`          bigint(20)  NOT NULL COMMENT '用户id',
+    `ip`          VARCHAR(32) NOT NULL COMMENT '用户IP',
+    `username`    VARCHAR(32) NOT NULL COMMENT '用户名',
+    `nickname`    VARCHAR(32) NOT NULL COMMENT '用户昵称',
+    `password`    bigint(20)  NOT NULL COMMENT '用户密码',
+    `email`       varchar(255) COMMENT '用户邮箱',
+    `image`       varchar(255) COMMENT '头像',
+    `birthday`    datetime COMMENT '用户生日',
+    `age`         bigint(20) COMMENT '用户年龄',
+    `sex`         varchar(2) COMMENT '性别',
+    `phone`       varchar(11) COMMENT '手机号',
+    `status`      int(11)     NOT NULL DEFAULT '1' COMMENT '状态 0:禁用，1:正常',
+    `create_time` datetime    NOT NULL DEFAULT now() COMMENT '注册时间',
+    `update_time` datetime             DEFAULT NULL COMMENT '信息修改时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
