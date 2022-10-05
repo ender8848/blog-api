@@ -165,6 +165,66 @@ public class LabelPOExample {
             return (Criteria) this;
         }
 
+        public Criteria andUser_idIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idEqualTo(Long value) {
+            addCriterion("user_id =", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotEqualTo(Long value) {
+            addCriterion("user_id <>", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idGreaterThan(Long value) {
+            addCriterion("user_id >", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idGreaterThanOrEqualTo(Long value) {
+            addCriterion("user_id >=", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idLessThan(Long value) {
+            addCriterion("user_id <", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idLessThanOrEqualTo(Long value) {
+            addCriterion("user_id <=", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idIn(List<Long> values) {
+            addCriterion("user_id in", values, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotIn(List<Long> values) {
+            addCriterion("user_id not in", values, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idBetween(Long value1, Long value2) {
+            addCriterion("user_id between", value1, value2, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotBetween(Long value1, Long value2) {
+            addCriterion("user_id not between", value1, value2, "user_id");
+            return (Criteria) this;
+        }
+
         public Criteria andNameIsNull() {
             addCriterion("name is null");
             return (Criteria) this;

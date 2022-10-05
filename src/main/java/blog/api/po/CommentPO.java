@@ -7,13 +7,15 @@ public class CommentPO {
 
     private Date create_time;
 
-    private Long thumb;
+    private Long thumb_count;
 
     private String name;
 
     private String email;
 
     private Long article_id;
+
+    private Long user_id;
 
     private Long parent_id;
 
@@ -37,12 +39,12 @@ public class CommentPO {
         this.create_time = create_time;
     }
 
-    public Long getThumb() {
-        return thumb;
+    public Long getThumb_count() {
+        return thumb_count;
     }
 
-    public void setThumb(Long thumb) {
-        this.thumb = thumb;
+    public void setThumb_count(Long thumb_count) {
+        this.thumb_count = thumb_count;
     }
 
     public String getName() {
@@ -67,6 +69,14 @@ public class CommentPO {
 
     public void setArticle_id(Long article_id) {
         this.article_id = article_id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public Long getParent_id() {

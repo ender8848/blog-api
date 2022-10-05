@@ -5,6 +5,8 @@ import java.util.Date;
 public class LabelPO {
     private Long id;
 
+    private Long user_id;
+
     private String name;
 
     private String alias;
@@ -21,6 +23,14 @@ public class LabelPO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {

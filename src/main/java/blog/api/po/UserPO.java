@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserPO {
     private Long id;
 
-    private Long ip;
+    private String ip;
 
     private String username;
 
@@ -27,7 +27,7 @@ public class UserPO {
 
     private Integer status;
 
-    private Date creat_time;
+    private Date create_time;
 
     private Date update_time;
 
@@ -39,12 +39,12 @@ public class UserPO {
         this.id = id;
     }
 
-    public Long getIp() {
+    public String getIp() {
         return ip;
     }
 
-    public void setIp(Long ip) {
-        this.ip = ip;
+    public void setIp(String ip) {
+        this.ip = ip == null ? null : ip.trim();
     }
 
     public String getUsername() {
@@ -127,12 +127,12 @@ public class UserPO {
         this.status = status;
     }
 
-    public Date getCreat_time() {
-        return creat_time;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreat_time(Date creat_time) {
-        this.creat_time = creat_time;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
     public Date getUpdate_time() {

@@ -175,52 +175,62 @@ public class UserPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andIpEqualTo(Long value) {
+        public Criteria andIpEqualTo(String value) {
             addCriterion("ip =", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpNotEqualTo(Long value) {
+        public Criteria andIpNotEqualTo(String value) {
             addCriterion("ip <>", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpGreaterThan(Long value) {
+        public Criteria andIpGreaterThan(String value) {
             addCriterion("ip >", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpGreaterThanOrEqualTo(Long value) {
+        public Criteria andIpGreaterThanOrEqualTo(String value) {
             addCriterion("ip >=", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpLessThan(Long value) {
+        public Criteria andIpLessThan(String value) {
             addCriterion("ip <", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpLessThanOrEqualTo(Long value) {
+        public Criteria andIpLessThanOrEqualTo(String value) {
             addCriterion("ip <=", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpIn(List<Long> values) {
+        public Criteria andIpLike(String value) {
+            addCriterion("ip like", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpNotLike(String value) {
+            addCriterion("ip not like", value, "ip");
+            return (Criteria) this;
+        }
+
+        public Criteria andIpIn(List<String> values) {
             addCriterion("ip in", values, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpNotIn(List<Long> values) {
+        public Criteria andIpNotIn(List<String> values) {
             addCriterion("ip not in", values, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpBetween(Long value1, Long value2) {
+        public Criteria andIpBetween(String value1, String value2) {
             addCriterion("ip between", value1, value2, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andIpNotBetween(Long value1, Long value2) {
+        public Criteria andIpNotBetween(String value1, String value2) {
             addCriterion("ip not between", value1, value2, "ip");
             return (Criteria) this;
         }
@@ -885,63 +895,63 @@ public class UserPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeIsNull() {
-            addCriterion("creat_time is null");
+        public Criteria andCreate_timeIsNull() {
+            addCriterion("create_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeIsNotNull() {
-            addCriterion("creat_time is not null");
+        public Criteria andCreate_timeIsNotNull() {
+            addCriterion("create_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeEqualTo(Date value) {
-            addCriterion("creat_time =", value, "creat_time");
+        public Criteria andCreate_timeEqualTo(Date value) {
+            addCriterion("create_time =", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeNotEqualTo(Date value) {
-            addCriterion("creat_time <>", value, "creat_time");
+        public Criteria andCreate_timeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeGreaterThan(Date value) {
-            addCriterion("creat_time >", value, "creat_time");
+        public Criteria andCreate_timeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeGreaterThanOrEqualTo(Date value) {
-            addCriterion("creat_time >=", value, "creat_time");
+        public Criteria andCreate_timeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeLessThan(Date value) {
-            addCriterion("creat_time <", value, "creat_time");
+        public Criteria andCreate_timeLessThan(Date value) {
+            addCriterion("create_time <", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeLessThanOrEqualTo(Date value) {
-            addCriterion("creat_time <=", value, "creat_time");
+        public Criteria andCreate_timeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeIn(List<Date> values) {
-            addCriterion("creat_time in", values, "creat_time");
+        public Criteria andCreate_timeIn(List<Date> values) {
+            addCriterion("create_time in", values, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeNotIn(List<Date> values) {
-            addCriterion("creat_time not in", values, "creat_time");
+        public Criteria andCreate_timeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeBetween(Date value1, Date value2) {
-            addCriterion("creat_time between", value1, value2, "creat_time");
+        public Criteria andCreate_timeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "create_time");
             return (Criteria) this;
         }
 
-        public Criteria andCreat_timeNotBetween(Date value1, Date value2) {
-            addCriterion("creat_time not between", value1, value2, "creat_time");
+        public Criteria andCreate_timeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "create_time");
             return (Criteria) this;
         }
 

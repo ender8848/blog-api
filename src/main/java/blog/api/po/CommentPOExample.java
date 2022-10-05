@@ -225,63 +225,63 @@ public class CommentPOExample {
             return (Criteria) this;
         }
 
-        public Criteria andThumbIsNull() {
-            addCriterion("thumb is null");
+        public Criteria andThumb_countIsNull() {
+            addCriterion("thumb_count is null");
             return (Criteria) this;
         }
 
-        public Criteria andThumbIsNotNull() {
-            addCriterion("thumb is not null");
+        public Criteria andThumb_countIsNotNull() {
+            addCriterion("thumb_count is not null");
             return (Criteria) this;
         }
 
-        public Criteria andThumbEqualTo(Long value) {
-            addCriterion("thumb =", value, "thumb");
+        public Criteria andThumb_countEqualTo(Long value) {
+            addCriterion("thumb_count =", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbNotEqualTo(Long value) {
-            addCriterion("thumb <>", value, "thumb");
+        public Criteria andThumb_countNotEqualTo(Long value) {
+            addCriterion("thumb_count <>", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbGreaterThan(Long value) {
-            addCriterion("thumb >", value, "thumb");
+        public Criteria andThumb_countGreaterThan(Long value) {
+            addCriterion("thumb_count >", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbGreaterThanOrEqualTo(Long value) {
-            addCriterion("thumb >=", value, "thumb");
+        public Criteria andThumb_countGreaterThanOrEqualTo(Long value) {
+            addCriterion("thumb_count >=", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbLessThan(Long value) {
-            addCriterion("thumb <", value, "thumb");
+        public Criteria andThumb_countLessThan(Long value) {
+            addCriterion("thumb_count <", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbLessThanOrEqualTo(Long value) {
-            addCriterion("thumb <=", value, "thumb");
+        public Criteria andThumb_countLessThanOrEqualTo(Long value) {
+            addCriterion("thumb_count <=", value, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbIn(List<Long> values) {
-            addCriterion("thumb in", values, "thumb");
+        public Criteria andThumb_countIn(List<Long> values) {
+            addCriterion("thumb_count in", values, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbNotIn(List<Long> values) {
-            addCriterion("thumb not in", values, "thumb");
+        public Criteria andThumb_countNotIn(List<Long> values) {
+            addCriterion("thumb_count not in", values, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbBetween(Long value1, Long value2) {
-            addCriterion("thumb between", value1, value2, "thumb");
+        public Criteria andThumb_countBetween(Long value1, Long value2) {
+            addCriterion("thumb_count between", value1, value2, "thumb_count");
             return (Criteria) this;
         }
 
-        public Criteria andThumbNotBetween(Long value1, Long value2) {
-            addCriterion("thumb not between", value1, value2, "thumb");
+        public Criteria andThumb_countNotBetween(Long value1, Long value2) {
+            addCriterion("thumb_count not between", value1, value2, "thumb_count");
             return (Criteria) this;
         }
 
@@ -482,6 +482,66 @@ public class CommentPOExample {
 
         public Criteria andArticle_idNotBetween(Long value1, Long value2) {
             addCriterion("article_id not between", value1, value2, "article_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idEqualTo(Long value) {
+            addCriterion("user_id =", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotEqualTo(Long value) {
+            addCriterion("user_id <>", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idGreaterThan(Long value) {
+            addCriterion("user_id >", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idGreaterThanOrEqualTo(Long value) {
+            addCriterion("user_id >=", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idLessThan(Long value) {
+            addCriterion("user_id <", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idLessThanOrEqualTo(Long value) {
+            addCriterion("user_id <=", value, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idIn(List<Long> values) {
+            addCriterion("user_id in", values, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotIn(List<Long> values) {
+            addCriterion("user_id not in", values, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idBetween(Long value1, Long value2) {
+            addCriterion("user_id between", value1, value2, "user_id");
+            return (Criteria) this;
+        }
+
+        public Criteria andUser_idNotBetween(Long value1, Long value2) {
+            addCriterion("user_id not between", value1, value2, "user_id");
             return (Criteria) this;
         }
 
