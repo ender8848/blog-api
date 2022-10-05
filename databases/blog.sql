@@ -1,4 +1,4 @@
-# create database blog;
+
 use blog;
 -- 用户表
 DROP TABLE IF EXISTS `user`;
