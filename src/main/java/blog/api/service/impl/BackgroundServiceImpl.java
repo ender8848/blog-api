@@ -18,25 +18,21 @@ public class BackgroundServiceImpl implements BackgroundService {
     private UserPOMapper userPOMapper;
 
     @Override
-    public HttpStatus checkUser(String username, long password) {
+    public boolean isValidUser(String username, long password) {
         UserPOExample example = new UserPOExample();
         UserPOExample.Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(username);
-        List<UserPO> userPOList = new ArrayList<>();
         try {
-            userPOList = userPOMapper.selectByExample(example);
+            List<UserPO> userPOList = userPOMapper.selectByExample(example);
+
+            if (userPOList.isEmpty()) {
+                return false;
+            }
+
+            return userPOList.get(0).getPassword() == password;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
-
-        if (userPOList.isEmpty()) {
-            return HttpStatus.FAIL;
-        }
-
-        if (userPOList.get(0).getPassword() != password) {
-            return HttpStatus.FAIL;
-        }
-
-        return HttpStatus.SUCCESS;
     }
 }
