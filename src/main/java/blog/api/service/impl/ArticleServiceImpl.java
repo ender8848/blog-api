@@ -4,6 +4,7 @@ import blog.api.mapper.ArticlePOMapper;
 import blog.api.po.ArticlePO;
 import blog.api.po.ArticlePOExample;
 import blog.api.service.ArticleService;
+import ch.qos.logback.core.encoder.EchoEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,5 +32,19 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticlePO> articlePOList = articlePOMapper.selectByExampleWithBLOBs(example);
 
         return articlePOList;
+    }
+
+    @Override
+    public boolean addArticleView(long userId, long articleId) {
+        try {
+            ArticlePO articlePO = articlePOMapper.selectByPrimaryKey(articleId);
+            if (articlePO == null) return false;
+            Long view_count = articlePO.getView_count();
+            articlePO.setView_count(++view_count);
+            articlePOMapper.updateByPrimaryKey(articlePO);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }

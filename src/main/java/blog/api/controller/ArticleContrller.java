@@ -5,6 +5,7 @@ import blog.api.enums.HttpStatus;
 import blog.api.po.ArticlePO;
 import blog.api.service.ArticleService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -32,5 +33,13 @@ public class ArticleContrller {
         List<ArticlePO> articlePOList = articleService.selectAtricleByUserId(id);
 
         return Result.success(HttpStatus.SUCCESS,articlePOList);
+    }
+
+    @PostMapping("/addViews")
+    public Result addViews(long userId, long articleId){
+
+        boolean serviceResult = articleService.addArticleView(userId, articleId);
+        return serviceResult ?
+                Result.success(HttpStatus.SUCCESS) : Result.error(HttpStatus.FAIL);
     }
 }

@@ -9,4 +9,7 @@ public interface ArticleService {
     ArticlePO selectAtricleById(long id);
 //    根据用户id获取文章，一对多
     List<ArticlePO> selectAtricleByUserId(long id);
+
+    /* 文章增添浏览量 */
+    boolean addArticleView(long userId, long articleId);
 }
