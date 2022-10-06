@@ -13,7 +13,7 @@ CREATE TABLE `user`
     `age`         bigint(20) COMMENT '用户年龄',
     `sex`         varchar(2) COMMENT '性别',
     `phone`       varchar(11) COMMENT '手机号',
-    `status`      int(11)     NOT NULL DEFAULT '1' COMMENT '状态 0:禁用，1:正常',
+    `status`      int(11)     NOT NULL DEFAULT 1 COMMENT '状态 0:禁用，1:正常',
     `create_time` datetime    NOT NULL DEFAULT now() COMMENT '注册时间',
     `update_time` datetime             DEFAULT NULL COMMENT '信息修改时间',
     PRIMARY KEY (`id`) USING BTREE
@@ -30,12 +30,12 @@ CREATE TABLE `article`
     `title`         VARCHAR(1024) NOT NULL COMMENT '博文标题',
     `sort_id`       bigint(20)    NOT NULL COMMENT '对应类别id',
     `content`       longtext      NOT NULL COMMENT '博文内容',
-    `view_count`    bigint(20)    NOT NULL DEFAULT '0' COMMENT '浏览量',
-    `thumb_count`   bigint(20)    NOT NULL DEFAULT '0' COMMENT '点赞量',
+    `view_count`    bigint(20)    NOT NULL DEFAULT 0 COMMENT '浏览量',
+    `thumb_count`   bigint(20)    NOT NULL DEFAULT 0 COMMENT '点赞量',
     `comment_count` bigint(20)    NOT NULL DEFAULT 0 COMMENT '评论总数',
     `create_time`   datetime      NOT NULL DEFAULT now() COMMENT '发表时间',
     `update_time`   datetime               DEFAULT NULL COMMENT '更新时间',
-    `status`        int(11)       NOT NULL DEFAULT '1' COMMENT '状态0 已删除 1 未删除',
+    `status`        int(11)       NOT NULL DEFAULT 1 COMMENT '状态0 已删除 1 未删除',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -54,8 +54,8 @@ CREATE TABLE `comment`
     `article_id`  bigint(20)   NOT NULL COMMENT '评论文章ID',
     `user_id`     bigint(20)   NOT NULL COMMENT '发表用户ID',
     `content`     text         NOT NULL COMMENT '评论内容',
-    `parent_id`   bigint(20)   NOT NULL DEFAULT '-1' COMMENT '父评论ID',
-    `status`      int(11)      NOT NULL DEFAULT '0' COMMENT '状态0未审评 1 审批通过',
+    `parent_id`   bigint(20)   NOT NULL DEFAULT -1 COMMENT '父评论ID',
+    `status`      int(11)      NOT NULL DEFAULT 0 COMMENT '状态0未审评 1 审批通过',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -72,7 +72,7 @@ CREATE TABLE `sort`
     `description` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '类别描述',
     `parent_id`   bigint(20)                       DEFAULT NULL COMMENT '父分类ID',
     `create_time` datetime   NOT NULL              DEFAULT now() COMMENT '创建时间',
-    `status`      int(11)    NOT NULL              DEFAULT '1' COMMENT '分类0 已删除 1 未删除',
+    `status`      int(11)    NOT NULL              DEFAULT 1 COMMENT '分类0 已删除 1 未删除',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
@@ -88,7 +88,7 @@ CREATE TABLE `label`
     `alias`       VARCHAR(32) COMMENT '标签别名',
     `description` varchar(512) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '标签描述',
     `create_time` datetime   NOT NULL              DEFAULT now() COMMENT '创建时间',
-    `status`      int(11)    NOT NULL              DEFAULT '1' COMMENT '标签0 已删除 1 未删除',
+    `status`      int(11)    NOT NULL              DEFAULT 1 COMMENT '标签0 已删除 1 未删除',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
