@@ -47,4 +47,9 @@ public class ArticleServiceImpl implements ArticleService {
         }
         return true;
     }
+
+    @Override
+    public List<ArticlePO> getHotArticle(long userId) {
+        return articlePOMapper.getHotArticle(userId, 5);
+    }
 }

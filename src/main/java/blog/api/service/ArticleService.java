@@ -12,4 +12,6 @@ public interface ArticleService {
 
     /* 文章增添浏览量 */
     boolean addArticleView(long userId, long articleId);
+
+    List<ArticlePO> getHotArticle(long userId);
 }

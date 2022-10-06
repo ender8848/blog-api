@@ -35,11 +35,20 @@ public class ArticleContrller {
         return Result.success(HttpStatus.SUCCESS,articlePOList);
     }
 
-    @PostMapping("/addViews")
+    @PostMapping("/addviews")
     public Result addViews(long userId, long articleId){
 
         boolean serviceResult = articleService.addArticleView(userId, articleId);
         return serviceResult ?
                 Result.success(HttpStatus.SUCCESS) : Result.error(HttpStatus.FAIL);
+    }
+
+    @GetMapping("/gethotarticle")
+    public Result getHotArticle(long userId){
+
+        List<ArticlePO> hotArticleList = articleService.getHotArticle(userId);
+        return hotArticleList.isEmpty() ?
+                Result.error(HttpStatus.FAIL):
+                Result.success(HttpStatus.SUCCESS, hotArticleList);
     }
 }

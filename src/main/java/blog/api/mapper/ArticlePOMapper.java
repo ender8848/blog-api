@@ -4,6 +4,7 @@ import blog.api.po.ArticlePO;
 import blog.api.po.ArticlePOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface ArticlePOMapper {
     int countByExample(ArticlePOExample example);
@@ -33,4 +34,7 @@ public interface ArticlePOMapper {
     int updateByPrimaryKeyWithBLOBs(ArticlePO record);
 
     int updateByPrimaryKey(ArticlePO record);
+
+    @Select("select * from article where user_id = #{userId} order by view_count desc, create_time desc limit #{num};")
+    List<ArticlePO> getHotArticle(@Param("userId") long uerId, @Param("num") long num);
 }
