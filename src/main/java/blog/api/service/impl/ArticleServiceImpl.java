@@ -101,4 +101,26 @@ public class ArticleServiceImpl implements ArticleService {
         }
 
     }
+
+    @Override
+    public ArticlePO editArticle(long articleId, String title, String content, long sortId, List<Long> labelIds) {
+        try {
+            ArticlePO articlePO = articlePOMapper.selectByPrimaryKey(articleId);
+            articlePO.setTitle(title);
+            articlePO.setContent(content);
+            articlePO.setSort_id(sortId);
+            articlePOMapper.updateByPrimaryKeyWithBLOBs(articlePO);
+
+            articleLabelMapper.deleteByArticleId(articleId);
+            for (Long labelId : labelIds) {
+                ArticleLabelPO articleLabelPO = new ArticleLabelPO();
+                articleLabelPO.setArticle_id(articlePO.getId());
+                articleLabelPO.setLabel_id(labelId);
+                articleLabelMapper.insert(articleLabelPO);
+            }
+            return  articlePO;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

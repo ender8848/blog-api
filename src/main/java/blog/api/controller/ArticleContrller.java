@@ -70,4 +70,13 @@ public class ArticleContrller {
         return serviceResult == null ? Result.error(HttpStatus.FAIL) :
                 Result.success(HttpStatus.SUCCESS, serviceResult);
     }
+
+    @PostMapping("/editarticle")
+    public Result editArticle(@RequestBody ArticleDTO articleDTO) {
+        ArticlePO serviceResult = articleService.editArticle(articleDTO.getArticle_id(), articleDTO.getTitle(),
+                articleDTO.getContent(), articleDTO.getSort_id(), articleDTO.getLabel_id_list());
+
+        return serviceResult == null ? Result.error(HttpStatus.FAIL) :
+                Result.success(HttpStatus.SUCCESS, serviceResult);
+    }
 }

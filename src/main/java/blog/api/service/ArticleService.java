@@ -18,4 +18,6 @@ public interface ArticleService {
     ArticlePO submit(long userId, String title, String content, long sortId, List<Long> labelIds);
 
     ArticlePO deleteArticle(long userId, long articleId);
+
+    ArticlePO editArticle(long articleId, String title, String content, long sortId, List<Long> labelIds);
 }

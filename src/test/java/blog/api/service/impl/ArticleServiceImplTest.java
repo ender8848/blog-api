@@ -49,7 +49,7 @@ public class ArticleServiceImplTest {
     }
 
     @Test
-    public void publish() {
+    public void submit() {
         List<Long> labels = new ArrayList<>();
         labels.add(1L);
         labels.add(2L);
@@ -73,5 +73,20 @@ public class ArticleServiceImplTest {
 
         ArticlePO queried = articleService.selectAtricleById(articlePO.getId());
         assertEquals(queried.getStatus(), 0);
+    }
+
+    @Test
+    public void editArticle() {
+        List<Long> labels = new ArrayList<>();
+        labels.add(1L);
+        labels.add(2L);
+        ArticlePO articlePO = articleService.submit(1L, "test", "test", 1L, labels);
+        List<Long> newLabels = new ArrayList<>();
+        labels.add(1000L);
+        labels.add(2000L);
+        articleService.editArticle(articlePO.getId(), "edit test", "edit test", 1L, newLabels);
+
+        ArticlePO queried = articlePOMapper.selectByPrimaryKey(articlePO.getId());
+        assertNotEquals(queried.getContent(), articlePO.getContent());
     }
 }
