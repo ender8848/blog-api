@@ -59,7 +59,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public ArticlePO publish(long userId, String title, String content, long sortId, List<Long> labelIds) {
+    public ArticlePO submit(long userId, String title, String content, long sortId, List<Long> labelIds) {
         try {
             ArticlePO articlePO = new ArticlePO();
             articlePO.setId(1L);
@@ -83,6 +83,19 @@ public class ArticleServiceImpl implements ArticleService {
 
             ArticlePO queried = articlePOMapper.selectByPrimaryKey(articlePO.getId());
             return queried;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    @Override
+    public ArticlePO deleteArticle(long userId, long articleId) {
+        try {
+            ArticlePO articlePO = articlePOMapper.selectByPrimaryKey(articleId);
+            articlePO.setStatus(0);
+            articlePOMapper.updateByPrimaryKey(articlePO);
+            return articlePO;
         } catch (Exception e) {
             return null;
         }

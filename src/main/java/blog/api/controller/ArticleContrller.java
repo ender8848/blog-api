@@ -56,8 +56,16 @@ public class ArticleContrller {
 
     @PostMapping("/submitarticle")
     public Result submitArticle(@RequestBody ArticleDTO articleDTO) {
-        ArticlePO serviceResult = articleService.publish(articleDTO.getUser_id(), articleDTO.getTitle(),
+        ArticlePO serviceResult = articleService.submit(articleDTO.getUser_id(), articleDTO.getTitle(),
                 articleDTO.getContent(), articleDTO.getSort_id(), articleDTO.getLabel_id_list());
+
+        return serviceResult == null ? Result.error(HttpStatus.FAIL) :
+                Result.success(HttpStatus.SUCCESS, serviceResult);
+    }
+
+    @PostMapping("/delarticle")
+    public Result deleteArticle(long userId, long articleId) {
+        ArticlePO serviceResult = articleService.deleteArticle(userId, articleId);
 
         return serviceResult == null ? Result.error(HttpStatus.FAIL) :
                 Result.success(HttpStatus.SUCCESS, serviceResult);

@@ -15,5 +15,7 @@ public interface ArticleService {
 
     List<ArticlePO> getHotArticle(long userId);
 
-    ArticlePO publish(long userId, String title, String content, long sortId, List<Long> labelIds);
+    ArticlePO submit(long userId, String title, String content, long sortId, List<Long> labelIds);
+
+    ArticlePO deleteArticle(long userId, long articleId);
 }

@@ -53,7 +53,7 @@ public class ArticleServiceImplTest {
         List<Long> labels = new ArrayList<>();
         labels.add(1L);
         labels.add(2L);
-        ArticlePO articlePO = articleService.publish(1L, "unit test", "test", 1L, labels);
+        ArticlePO articlePO = articleService.submit(1L, "unit test", "test", 1L, labels);
 
         ArticlePO queried = articlePOMapper.selectByPrimaryKey(articlePO.getId());
         assertNotNull(queried);
@@ -61,5 +61,17 @@ public class ArticleServiceImplTest {
         List<ArticleLabelPO> articleLabelPOList = articleLabelMapper.selectByArticleId(queried.getId());
 
         assertEquals(labels.size(), articleLabelPOList.size());
+    }
+
+    @Test
+    public void deleteArticle() {
+        List<Long> labels = new ArrayList<>();
+        labels.add(1L);
+        labels.add(2L);
+        ArticlePO articlePO = articleService.submit(1L, "del test", "del test", 1L, labels);
+        articleService.deleteArticle(articlePO.getUser_id(), articlePO.getId());
+
+        ArticlePO queried = articleService.selectAtricleById(articlePO.getId());
+        assertEquals(queried.getStatus(), 0);
     }
 }
