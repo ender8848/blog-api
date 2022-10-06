@@ -46,6 +46,18 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+<!--添加测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.3.3.RELEASE</version>
+        </dependency>
+<!--        添加lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+        </dependency>
     </dependencies>
 
     <!--  Mybatis自动生成PO文件的插件  -->
