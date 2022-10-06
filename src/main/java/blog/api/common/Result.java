@@ -4,8 +4,7 @@ package blog.api.common;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @Data
 public class Result<T> implements Serializable {
