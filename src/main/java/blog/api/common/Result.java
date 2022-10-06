@@ -1,6 +1,7 @@
 package blog.api.common;
 
 
+import blog.api.enums.HttpStatus;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,20 +16,27 @@ public class Result<T> implements Serializable {
 
     private T data; //数据
 
-
-
-    public static <T> Result<T> success(Integer code,String msg,T object) {
-        Result<T> r = new Result<T>();
-        r.data = object;
-        r.code = code;
-        r.msg = msg;
-        return r;
-    }
-
-    public static <T> Result<T> error(Integer code,String msg) {
+    public static <T> Result<T> success(HttpStatus httpStatus,T object){
         Result r = new Result();
-        r.code = code;
-        r.msg = msg;
+        r.code = httpStatus.status();
+        r.msg = httpStatus.msg();
+        r.data = object;
         return r;
     }
+
+
+    public static <T> Result<T> success(HttpStatus httpStatus){
+        Result r = new Result();
+        r.code = httpStatus.status();
+        r.msg = httpStatus.msg();
+        return r;
+    }
+
+    public static <T> Result<T> error(HttpStatus httpStatus){
+        Result r = new Result();
+        r.code = httpStatus.status();
+        r.msg = httpStatus.msg();
+        return r;
+    }
+
 }

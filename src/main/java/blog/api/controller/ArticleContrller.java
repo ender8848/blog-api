@@ -1,6 +1,7 @@
 package blog.api.controller;
 
 import blog.api.common.Result;
+import blog.api.enums.HttpStatus;
 import blog.api.po.ArticlePO;
 import blog.api.service.ArticleService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +21,16 @@ public class ArticleContrller {
 
         ArticlePO  articlePO = articleService.selectAtricleById(id);
 
-        return  Result.success(1,"成功",articlePO);
+//        return  Result.success(1,"成功",articlePO);
+        return  Result.success(HttpStatus.SUCCESS,articlePO);
     }
+
 
     @GetMapping("/getArticleByUserId")
     public Result<List<ArticlePO>> getArticleByUserId(long id){
 
         List<ArticlePO> articlePOList = articleService.selectAtricleByUserId(id);
 
-        return Result.success(1,"成功",articlePOList);
-
+        return Result.success(HttpStatus.SUCCESS,articlePOList);
     }
 }
