@@ -14,4 +14,6 @@ public interface ArticleService {
     boolean addArticleView(long userId, long articleId);
 
     List<ArticlePO> getHotArticle(long userId);
+
+    ArticlePO publish(long userId, String title, String content, long sortId, List<Long> labelIds);
 }

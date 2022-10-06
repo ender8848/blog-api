@@ -1,11 +1,13 @@
 package blog.api.controller;
 
 import blog.api.common.Result;
+import blog.api.dto.ArticleDTO;
 import blog.api.enums.HttpStatus;
 import blog.api.po.ArticlePO;
 import blog.api.service.ArticleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -50,5 +52,14 @@ public class ArticleContrller {
         return hotArticleList.isEmpty() ?
                 Result.error(HttpStatus.FAIL):
                 Result.success(HttpStatus.SUCCESS, hotArticleList);
+    }
+
+    @PostMapping("/submitarticle")
+    public Result submitArticle(@RequestBody ArticleDTO articleDTO) {
+        ArticlePO serviceResult = articleService.publish(articleDTO.getUser_id(), articleDTO.getTitle(),
+                articleDTO.getContent(), articleDTO.getSort_id(), articleDTO.getLabel_id_list());
+
+        return serviceResult == null ? Result.error(HttpStatus.FAIL) :
+                Result.success(HttpStatus.SUCCESS, serviceResult);
     }
 }
