@@ -1,6 +1,5 @@
 package blog.api.service.impl;
 
-import blog.api.enums.HttpStatus;
 import blog.api.mapper.SortPOMapper;
 import blog.api.mapper.UserPOMapper;
 import blog.api.po.SortPO;
@@ -10,7 +9,6 @@ import blog.api.service.BackgroundService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,6 +49,21 @@ public class BackgroundServiceImpl implements BackgroundService {
             sortPO.setDescription(description);
             sortPO.setParent_id(parentId);
             sortPOMapper.insertSelective(sortPO);
+            return sortPO;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public SortPO editSort(long sortId, String name, String alias, String description, Long parentId) {
+        try {
+            SortPO sortPO = sortPOMapper.selectByPrimaryKey(sortId);
+            sortPO.setName(name);
+            sortPO.setAlias(alias);
+            sortPO.setDescription(description);
+            sortPO.setParent_id(parentId);
+            sortPOMapper.updateByPrimaryKey(sortPO);
             return sortPO;
         } catch (Exception e) {
             return null;

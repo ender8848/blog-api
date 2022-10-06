@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class SortDTO {
-    private long user_id;
+    private Long sort_id;
+    private Long user_id;
     private String name;
     private String alias;
     private String description;
-    private long parent_id;
+    private Long parent_id;
 }

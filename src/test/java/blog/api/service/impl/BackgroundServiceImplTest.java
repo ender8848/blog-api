@@ -30,4 +30,14 @@ public class BackgroundServiceImplTest {
         assertNotNull(queried);
         assertEquals(queried.getName(), "test");
     }
+
+    @Test
+    public void editSort() {
+        SortPO sortPO = backgroundService.addSort(1, "1", "1", "1", null);
+        SortPO newSort = backgroundService.editSort(sortPO.getId(),
+                "edit", "edit", "edit", null);
+        assertEquals(newSort.getName(), "edit");
+        assertEquals(newSort.getAlias(), "edit");
+        assertEquals(newSort.getDescription(), "edit");
+    }
 }

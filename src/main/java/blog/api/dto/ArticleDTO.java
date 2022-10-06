@@ -6,8 +6,8 @@ import java.util.List;
 
 @Data
 public class ArticleDTO {
-    private long user_id;
-    private long article_id;
+    private Long user_id;
+    private Long article_id;
     String title;
     String content;
     long sort_id;

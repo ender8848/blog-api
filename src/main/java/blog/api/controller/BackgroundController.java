@@ -32,4 +32,13 @@ public class BackgroundController {
         return serviceResult == null ? Result.error(HttpStatus.FAIL):
                 Result.success(HttpStatus.SUCCESS, serviceResult);
     }
+
+    @PostMapping("/editsort")
+    public Result<Object> editSort(@RequestBody SortDTO sortDTO) {
+        SortPO serviceResult = backgroundService.editSort(sortDTO.getSort_id(), sortDTO.getName(), sortDTO.getAlias(),
+                sortDTO.getDescription(), sortDTO.getParent_id());
+
+        return serviceResult == null ? Result.error(HttpStatus.FAIL):
+                Result.success(HttpStatus.SUCCESS, serviceResult);
+    }
 }
