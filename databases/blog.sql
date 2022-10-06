@@ -41,6 +41,10 @@ CREATE TABLE `article`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_bin COMMENT ='博文';
 
+# 简单的文章数据
+INSERT INTO `article` (`id`, `user_id`, `title`, `sort_id`, `content`, `view_count`, `thumb_count`, `comment_count`, `create_time`, `update_time`, `status`) VALUES (1, 1, '星球学习', 1, '加入星球后，有任何编程方面的问题都可以 1 对 1 向鱼皮提问 ，鱼皮和大厂嘉宾会帮你解决编程学习的困惑。说明自己的情况后，鱼皮会为你定制目标和学习计划，让你始终知道下一步该做什么，不再迷茫！\r\n\r\n鱼皮已经公开回答过的问题大家都能浏览和评论，可以获得更中肯的建议。对大家普遍比较关心的问题，鱼皮会专门写文章来全面地解答。比如选择读研还是就业这个问题，鱼皮结合自己的经历写了一篇 6000 字的文章：', 0, 0, 0, '2022-10-06 09:22:53', NULL, 1);
+INSERT INTO `article` (`id`, `user_id`, `title`, `sort_id`, `content`, `view_count`, `thumb_count`, `comment_count`, `create_time`, `update_time`, `status`) VALUES (2, 1, 'Go学习', 1, 'Go 语言的发展越来越好了，很多大厂使用 Go 作为主要开发语言，也有很多人开始学习 Go，准备转 Go 开发。\n那么，怎么学呢？\n我发现，在互联网时代，学习的困难不是说没有资料，而是资料太多，不知道应该看哪个，从哪开始看。\n所以，我整理了一份 Go 学习路线，这份学习路线不以数量取胜，努力做到精简。从基础到进阶，从理论到实战，一共包括以下几个内容：\n\n入门教程\n进阶教程\n书籍推荐\nWeb 开发\n练手', 0, 0, 0, '2022-10-06 10:21:40', NULL, 1);
+INSERT INTO `article` (`id`, `user_id`, `title`, `sort_id`, `content`, `view_count`, `thumb_count`, `comment_count`, `create_time`, `update_time`, `status`) VALUES (3, 1, 'Java', 1, '入门：Java SE基础-->Java Web(含数据库+H5+js+vue)\r\n\r\n中级：Maven-->Git-->SSM框架 -->MybatisPlus-->Spring Boot-->传智健康【项目实战】\r\n\r\n进阶：Spring Cloud(微服务开发,学这一套就够了) 也可分技术点学： (Dubbo-->Zookeeper-->RabbitMQ-->RocketMQ-->Docker-->Redis -->MongoDB-->搜索技术Elasticsearch-->MySQL进阶）\r\n\r\n项目：SaaSiHRM【企业服务】-->好客租房【生活服务】-->万信金融【金融行业】-->闪聚支付【聚合支付】-->权限管理一体化解决方案-->短信网关平台\r\n\r\n以上技术，足以支撑找一份好的java开发工作。', 0, 0, 0, '2022-10-06 13:21:38', NULL, 1);
 
 -- 评论表
 DROP TABLE IF EXISTS `comment`;
