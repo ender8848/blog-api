@@ -1,7 +1,9 @@
 package blog.api.service.impl;
 
 import blog.api.enums.HttpStatus;
+import blog.api.mapper.SortPOMapper;
 import blog.api.mapper.UserPOMapper;
+import blog.api.po.SortPO;
 import blog.api.po.UserPO;
 import blog.api.po.UserPOExample;
 import blog.api.service.BackgroundService;
@@ -16,6 +18,9 @@ public class BackgroundServiceImpl implements BackgroundService {
 
     @Resource
     private UserPOMapper userPOMapper;
+
+    @Resource
+    private SortPOMapper sortPOMapper;
 
     @Override
     public boolean isValidUser(String username, long password) {
@@ -33,6 +38,22 @@ public class BackgroundServiceImpl implements BackgroundService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
+        }
+    }
+
+    @Override
+    public SortPO addSort(long userId, String name, String alias, String description, Long parentId) {
+        try {
+            SortPO sortPO = new SortPO();
+            sortPO.setUser_id(userId);
+            sortPO.setName(name);
+            sortPO.setAlias(alias);
+            sortPO.setDescription(description);
+            sortPO.setParent_id(parentId);
+            sortPOMapper.insertSelective(sortPO);
+            return sortPO;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

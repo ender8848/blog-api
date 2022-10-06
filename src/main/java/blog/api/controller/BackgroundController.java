@@ -1,12 +1,11 @@
 package blog.api.controller;
 
 import blog.api.common.Result;
+import blog.api.dto.SortDTO;
 import blog.api.enums.HttpStatus;
+import blog.api.po.SortPO;
 import blog.api.service.BackgroundService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -23,5 +22,14 @@ public class BackgroundController {
         boolean isValidUser = backgroundService.isValidUser(username, password);
 
         return isValidUser ? Result.success(HttpStatus.SUCCESS) : Result.error(HttpStatus.FAIL);
+    }
+
+    @PostMapping("/addsort")
+    public Result<Object> addSort(@RequestBody SortDTO sortDTO) {
+        SortPO serviceResult = backgroundService.addSort(sortDTO.getUser_id(), sortDTO.getName(), sortDTO.getAlias(),
+                sortDTO.getDescription(), sortDTO.getParent_id());
+
+        return serviceResult == null ? Result.error(HttpStatus.FAIL):
+                Result.success(HttpStatus.SUCCESS, serviceResult);
     }
 }
