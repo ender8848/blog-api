@@ -32,7 +32,7 @@ CREATE TABLE `article`
     `content`       longtext      NOT NULL COMMENT '博文内容',
     `view_count`    bigint(20)    NOT NULL DEFAULT '0' COMMENT '浏览量',
     `thumb_count`   bigint(20)    NOT NULL DEFAULT '0' COMMENT '点赞量',
-    `comment_count` bigint(20)    NOT NULL DEFAULT '0' COMMENT '评论总数',
+    `comment_count` bigint(20)    NOT NULL DEFAULT 0 COMMENT '评论总数',
     `create_time`   datetime      NOT NULL DEFAULT now() COMMENT '发表时间',
     `update_time`   datetime               DEFAULT NULL COMMENT '更新时间',
     `status`        int(11)       NOT NULL DEFAULT '1' COMMENT '状态0 已删除 1 未删除',
